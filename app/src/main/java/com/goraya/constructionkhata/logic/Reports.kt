@@ -73,8 +73,8 @@ object Reports {
             .forEach { ls += L(it.date, Src.label(it.source) + if (it.note.isBlank()) "" else " - ${it.note}", it.amount, 0) }
         d.payments.filter { it.method == Calc.CASH && it.date in from..to }.forEach {
             val who = partyName(d, it.partyId).let { n -> if (n == "-") "" else " - $n" }
-            if (it.kind == Kind.REFUND) ls += L(it.date, Kind.label(it.kind) + who, it.amount, 0)
-            else ls += L(it.date, Kind.label(it.kind) + who, 0, it.amount)
+            if (it.kind == com.goraya.constructionkhata.logic.Kind.REFUND) ls += L(it.date, com.goraya.constructionkhata.logic.Kind.label(it.kind) + who, it.amount, 0)
+            else ls += L(it.date, com.goraya.constructionkhata.logic.Kind.label(it.kind) + who, 0, it.amount)
         }
         d.transfers.filter { it.date in from..to }.forEach {
             if (it.toAccount == Calc.CASH) ls += L(it.date, "منتقلی ${it.fromAccount} سے", it.amount, 0)
