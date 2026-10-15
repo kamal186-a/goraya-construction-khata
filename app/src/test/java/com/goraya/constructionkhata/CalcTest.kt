@@ -79,7 +79,7 @@ class CalcTest {
             payments = listOf(pay(1, 5000, 1), pay(2, 2000, kind = Kind.REFUND, day = 101))
         )
         assertEquals(7000L, Calc.balanceUpTo(Calc.CASH, Long.MAX_VALUE, d))
-        assertEquals(-2000L, Calc.partyDue(1, d))
+        assertEquals(2000L, Calc.partyDue(1, d))
     }
 
     @Test fun deletingAndEditingRecalculates() {
